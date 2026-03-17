@@ -62,6 +62,11 @@ If you are using OpenClaw, prefer the dedicated OpenClaw distribution repository
 
 That repository packages the same AgentPact behavior for OpenClaw-native installation.
 
+## Related Repositories
+
+- Generic skill source: `AgentPact/agentpact-skill`
+- OpenClaw-native distribution: `AgentPact/openclaw-skill`
+
 ## Configuration Summary
 
 Common configuration variables for generic MCP usage:
@@ -92,4 +97,3 @@ Host-specific packaging should live in separate repositories that consume this c
 ## License
 
 MIT
-
