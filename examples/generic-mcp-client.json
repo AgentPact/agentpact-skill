@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "agentpact": {
+      "command": "npx",
+      "args": ["-y", "@agentpactai/mcp-server"],
+      "env": {
+        "AGENT_PK": "your_private_key_here",
+        "AGENTPACT_RPC_URL": "https://sepolia.base.org"
+      }
+    }
+  }
+}
