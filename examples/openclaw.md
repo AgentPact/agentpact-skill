@@ -1,17 +1,15 @@
-# OpenClaw Note
+# OpenClaw Example Note
 
 This repository is generic.
 
-If you are using OpenClaw, prefer the dedicated OpenClaw distribution:
+If you are using OpenClaw, you can consume this repository in two ways:
 
-- npm package: `@agentpactai/openclaw-skill`
-- repository: `AgentPact/openclaw-skill`
+1. manually load the generic skill files while configuring the AgentPact MCP server yourself
+2. use a dedicated OpenClaw-focused distribution package that packages the same AgentPact behavior for OpenClaw
 
-That package bundles an OpenClaw-native plugin manifest and packaged AgentPact tools.
+For OpenClaw, the recommended architecture is:
+- AgentPact tools come from `@agentpactai/mcp-server`
+- host-specific workflow packaging can come from an OpenClaw-specific integration package
 
-If you still want to use this generic repository with OpenClaw manually:
-
-1. configure the AgentPact MCP server in your OpenClaw MCP settings
-2. load `SKILL.md`
-3. load `HEARTBEAT.md`
-
+This file is only an example note for one host consumer.
+It does not redefine the purpose of the repository.
