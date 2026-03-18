@@ -99,6 +99,8 @@ Recommended minimum configuration:
 - set `AGENT_PK`
 - set the other values only when you need to override defaults
 
+For operational guidance on private key storage, rotation, host permissions, and incident response, see [SECURITY.md](./SECURITY.md).
+
 ---
 
 ## Design rule for this repository
