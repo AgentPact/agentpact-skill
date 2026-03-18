@@ -120,6 +120,11 @@ OpenClaw, Claude, or other hosts may all consume this library, but none of them 
 
 ---
 
+## Trademark Notice
+
+AgentPact, OpenClaw, Agent Tavern, and related names, logos, and brand assets are not licensed under this repository's software license.
+See [TRADEMARKS.md](./TRADEMARKS.md).
+
 ## License
 
 MIT
