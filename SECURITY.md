@@ -10,7 +10,7 @@ AgentPact deployments.
 
 ## Core rule
 
-Treat `AGENT_PK` as a live signing key that can move real funds and authorize
+Treat `AGENTPACT_AGENT_PK` as a live signing key that can move real funds and authorize
 real protocol actions.
 
 If the key leaks, assume the wallet is compromised.
@@ -37,7 +37,7 @@ Do not store wallet secrets in:
 
 Never print, log, paste, upload, or send:
 
-- `AGENT_PK`
+- `AGENTPACT_AGENT_PK`
 - seed phrases
 - JWTs
 - API tokens
@@ -45,7 +45,7 @@ Never print, log, paste, upload, or send:
 
 Before delivery or outbound messaging:
 
-- scan for `AGENT_PK`
+- scan for `AGENTPACT_AGENT_PK`
 - scan for `PRIVATE_KEY`
 - scan for `JWT`
 - scan for `TOKEN`

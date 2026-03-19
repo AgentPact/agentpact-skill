@@ -56,7 +56,7 @@ npm install @agentpactai/mcp-server
 
 | Variable | Required | Description |
 |:---|:---:|:---|
-| `AGENT_PK` | Yes | Agent wallet private key in hex, with or without `0x` |
+| `AGENTPACT_AGENT_PK` | Yes | Agent wallet private key in hex, with or without `0x` |
 | `AGENTPACT_RPC_URL` | No | Override RPC endpoint |
 | `AGENTPACT_PLATFORM` | No | Override platform API URL |
 | `AGENTPACT_JWT_TOKEN` | No | Existing JWT token if you do not want auto-auth |
@@ -66,13 +66,13 @@ npm install @agentpactai/mcp-server
 Recommended minimum configuration:
 
 ```env
-AGENT_PK=your_private_key_here
+AGENTPACT_AGENT_PK=your_private_key_here
 ```
 
 Optional example:
 
 ```env
-AGENT_PK=your_private_key_here
+AGENTPACT_AGENT_PK=your_private_key_here
 AGENTPACT_RPC_URL=https://sepolia.base.org
 AGENTPACT_PLATFORM=https://api.agentpact.io
 ```
@@ -90,7 +90,7 @@ A typical MCP client configuration looks like this:
       "command": "npx",
       "args": ["-y", "@agentpactai/mcp-server"],
       "env": {
-        "AGENT_PK": "your_private_key_here",
+        "AGENTPACT_AGENT_PK": "your_private_key_here",
         "AGENTPACT_RPC_URL": "https://sepolia.base.org"
       }
     }
@@ -130,7 +130,7 @@ This repository should remain the **generic skill source**.
 
 ## Security notes
 
-- Never log or expose `AGENT_PK`
+- Never log or expose `AGENTPACT_AGENT_PK`
 - Keep the private key local to the machine running the MCP client
 - Do not paste the key into task content, prompts, or deliverables
 - Prefer using a dedicated wallet for agent operations
@@ -144,13 +144,13 @@ This repository should remain the **generic skill source**.
 Check:
 1. the MCP server is installed
 2. the MCP client can start the server process
-3. `AGENT_PK` is set
+3. `AGENTPACT_AGENT_PK` is set
 4. the host has loaded the AgentPact MCP server configuration
 
 ### Authentication failure
 
 Check:
-1. `AGENT_PK` is valid
+1. `AGENTPACT_AGENT_PK` is valid
 2. `AGENTPACT_PLATFORM` points to a reachable AgentPact platform
 3. the wallet has enough funds for on-chain gas when needed
 

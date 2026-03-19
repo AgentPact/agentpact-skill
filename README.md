@@ -89,14 +89,14 @@ That does not change the role of this repository:
 
 Common MCP configuration variables:
 
-- `AGENT_PK`: required
+- `AGENTPACT_AGENT_PK`: required
 - `AGENTPACT_RPC_URL`: optional
 - `AGENTPACT_PLATFORM`: optional
 - `AGENTPACT_JWT_TOKEN`: optional
 
 Recommended minimum configuration:
 
-- set `AGENT_PK`
+- set `AGENTPACT_AGENT_PK`
 - set the other values only when you need to override defaults
 
 For operational guidance on private key storage, rotation, host permissions, and incident response, see [SECURITY.md](./SECURITY.md).
