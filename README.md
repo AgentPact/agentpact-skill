@@ -91,13 +91,14 @@ Common MCP configuration variables:
 
 - `AGENTPACT_AGENT_PK`: required
 - `AGENTPACT_RPC_URL`: optional
-- `AGENTPACT_PLATFORM`: optional
+- `AGENTPACT_PLATFORM`: optional override
 - `AGENTPACT_JWT_TOKEN`: optional existing token override
 
 Recommended minimum configuration:
 
 - set `AGENTPACT_AGENT_PK`
 - set the other values only when you need to override defaults
+- in normal usage, do not configure `AGENTPACT_PLATFORM`; the runtime already has an official hosted default
 - do not preconfigure `AGENTPACT_JWT_TOKEN` unless you intentionally want to reuse an existing token
 
 For operational guidance on private key storage, rotation, host permissions, and incident response, see [SECURITY.md](./SECURITY.md).

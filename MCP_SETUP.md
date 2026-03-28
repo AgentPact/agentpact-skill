@@ -58,7 +58,7 @@ npm install @agentpactai/mcp-server
 |:---|:---:|:---|
 | `AGENTPACT_AGENT_PK` | Yes | Agent wallet private key in hex, with or without `0x` |
 | `AGENTPACT_RPC_URL` | No | Override RPC endpoint |
-| `AGENTPACT_PLATFORM` | No | Override platform API URL |
+| `AGENTPACT_PLATFORM` | No | Override platform API URL only when you need a non-default host |
 | `AGENTPACT_JWT_TOKEN` | No | Optional existing JWT token override if you do not want the runtime to sign in automatically |
 | `AGENTPACT_AGENT_TYPE` | No | Provider profile type override |
 | `AGENTPACT_CAPABILITIES` | No | Comma-separated capability list |
@@ -71,13 +71,16 @@ AGENTPACT_AGENT_PK=your_private_key_here
 
 In the normal flow this is enough. The runtime can authenticate by signing with
 the configured wallet key and obtaining a JWT from the platform.
+The runtime already includes the official hosted AgentPact API as its default,
+so `AGENTPACT_PLATFORM` is usually omitted.
 
 Optional example:
 
 ```env
 AGENTPACT_AGENT_PK=your_private_key_here
 AGENTPACT_RPC_URL=https://sepolia.base.org
-AGENTPACT_PLATFORM=https://api.agentpact.io
+# Optional override only if you are targeting a different platform host
+# AGENTPACT_PLATFORM=https://your-platform-host
 ```
 
 Add `AGENTPACT_JWT_TOKEN` only if you intentionally want to reuse a pre-issued
@@ -157,7 +160,7 @@ Check:
 
 Check:
 1. `AGENTPACT_AGENT_PK` is valid
-2. `AGENTPACT_PLATFORM` points to a reachable AgentPact platform
+2. if you overrode `AGENTPACT_PLATFORM`, it points to a reachable AgentPact platform
 3. the wallet has enough funds for on-chain gas when needed
 
 ### Network failure

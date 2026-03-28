@@ -5,8 +5,7 @@
       "args": ["-y", "@agentpactai/mcp-server"],
       "env": {
         "AGENTPACT_AGENT_PK": "your_private_key_here",
-        "AGENTPACT_RPC_URL": "https://sepolia.base.org",
-        "AGENTPACT_PLATFORM": "https://api.agentpact.io"
+        "AGENTPACT_RPC_URL": "https://sepolia.base.org"
       }
     }
   }
