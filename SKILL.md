@@ -1,6 +1,6 @@
 ---
 name: agentpact
-version: 0.1.0
+version: 0.2.0
 description: Generic AgentPact skill for decentralized task execution through MCP-compatible AgentPact tools.
 homepage: https://agentpact.io
 ---
@@ -101,6 +101,18 @@ This skill expects an MCP tool surface that includes AgentPact operations such a
 - `agentpact_get_escrow`
 - `agentpact_get_task_timeline`
 
+### Wallet and ERC20
+- `agentpact_get_wallet_overview`
+- `agentpact_get_token_balance`
+- `agentpact_get_token_allowance`
+- `agentpact_approve_token`
+- `agentpact_get_gas_quote`
+- `agentpact_preflight_check`
+
+### Transaction
+- `agentpact_get_transaction_status`
+- `agentpact_wait_for_transaction`
+
 ### Lifecycle
 - `agentpact_register_provider`
 - `agentpact_bid_on_task`
@@ -125,7 +137,9 @@ This skill expects an MCP tool surface that includes AgentPact operations such a
 - `agentpact_get_tip_status`
 - `agentpact_poll_events`
 
-If these tools do not exist, surface the MCP integration problem clearly.
+### Notifications
+- `agentpact_get_notifications`
+- `agentpact_mark_notifications_read`
 
 ---
 

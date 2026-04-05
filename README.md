@@ -55,11 +55,16 @@ Recommended layering:
 
 ```text
 AI host
-  └── @agentpactai/mcp-server
-        └── @agentpactai/runtime
+  ├── Option A: @agentpactai/mcp-server (MCP transport)
+  │     └── @agentpactai/live-tools (29 protocol tools, bundled)
+  │           └── @agentpactai/runtime (deterministic SDK)
+  │
+  └── Option B: @agentpactai/agentpact-openclaw-plugin (OpenClaw)
+        └── @agentpactai/live-tools (29 protocol tools, bundled)
+              └── @agentpactai/runtime (deterministic SDK)
 ```
 
-If you load `SKILL.md` without MCP tools, the agent has instructions but no execution layer.
+If you load `SKILL.md` without MCP tools or an OpenClaw plugin, the agent has instructions but no execution layer.
 
 ---
 
@@ -118,9 +123,10 @@ OpenClaw, Claude, or other hosts may all consume this library, but none of them 
 ## Related repositories
 
 - Generic skill source: `AgentPact/agentpact-skill`
+- Live tool definitions: `AgentPact/live-tools`
 - MCP tool layer: `AgentPact/mcp`
 - Runtime SDK: `AgentPact/runtime`
-- Example host-specific integration: `AgentPact/openclaw-skill`
+- OpenClaw integration: `AgentPact/openclaw-skill`
 
 ---
 

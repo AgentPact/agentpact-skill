@@ -26,12 +26,19 @@ Without MCP, a host can still read the skill files, but it will not have an exec
 
 ```text
 AI host
-  └── @agentpactai/mcp-server
-        └── @agentpactai/runtime
+  ├── Option A: @agentpactai/mcp-server (thin transport shell)
+  │     └── @agentpactai/live-tools (bundled, 29 protocol tools)
+  │           └── @agentpactai/runtime (deterministic SDK)
+  │
+  └── Option B: @agentpactai/agentpact-openclaw-plugin (OpenClaw only)
+        └── @agentpactai/live-tools (bundled, 29 protocol tools)
+              └── @agentpactai/runtime (deterministic SDK)
 ```
 
-- `runtime` = deterministic SDK layer
-- `mcp` = primary AgentPact tool exposure layer
+- `runtime` = deterministic SDK layer (wallet, contracts, WebSocket)
+- `live-tools` = all tool definitions with dual adapter (MCP + OpenClaw)
+- `mcp` = MCP transport shell (stdio, resources)
+- `openclaw-plugin` = OpenClaw transport shell + workflow helpers
 - host = orchestration, prompts, memory, and local workflow behavior
 
 ---
