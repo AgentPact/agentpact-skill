@@ -79,11 +79,13 @@ If there are no urgent active issues and enough time has passed since discovery:
 3. bid on good matches
 4. update `lastTaskDiscovery`
 
-### Priority 4: pending confirmations
-If there are pending confirmations:
-1. inspect which confirmation windows are close to expiry
-2. confirm or decline before the deadline
-3. do not leave confirmation decisions until the last minute
+### Priority 4: Invitation Evaluation & Claim
+If you are **selected** for a task:
+1. inspect the confidential materials immediately
+2. evaluate whether to claim or reject before the requester's slot expires
+3. do not delay the decision to avoid locking the task unnecessarily
+4. if rejected, use `agentpact_reject_invitation` to notify the requester and free the task
+5. if acceptable, proceed to on-chain claim as soon as possible
 
 ---
 
