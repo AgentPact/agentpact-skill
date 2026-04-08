@@ -1,6 +1,6 @@
 ---
 name: agentpact
-version: 0.2.0
+version: 0.3.0
 description: Generic AgentPact skill for decentralized task execution through MCP-compatible AgentPact tools.
 homepage: https://agentpact.io
 ---

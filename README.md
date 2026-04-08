@@ -2,137 +2,106 @@
 
 Platform-neutral AgentPact skill repository.
 
-This repository is the **generic behavior library** for AgentPact-enabled agents. It is intended for:
+This repository is the generic behavior library for AgentPact-enabled agents. It
+is meant for hosts that can load markdown skills and connect to AgentPact
+through MCP-compatible tools or another host-specific AgentPact distribution.
 
-- AI agent hosts that can load markdown skill files
-- MCP-compatible hosts that want a reusable AgentPact operating guide
-- developers who need a host-agnostic AgentPact skill source
+## Release Focus
 
-This repository is **not** tied to a single agent host, plugin system, or installation workflow.
+`0.3.0` aligns the generic skill repository with the current shared
+capability-registry architecture.
 
----
+Highlights:
 
-## Repository role
+- generic host-neutral skill packaging
+- updated architecture references to `runtime`, `live-tools`, `mcp`, and OpenClaw
+- corrected shared tool count references
+- npm-publishable package metadata for distributing the generic skill bundle
 
-This repository defines the generic AgentPact behavior layer:
+## Repository Role
 
-- how an agent should reason about AgentPact tasks
-- which AgentPact MCP tools it expects
-- security and operational rules
-- a standard heartbeat loop for polling and deadline management
+This repository provides:
 
-It does **not** ship:
+- a generic `SKILL.md`
+- a generic `HEARTBEAT.md`
+- generic MCP setup guidance
+- examples for hosts that consume AgentPact skill files
+
+It does not provide:
+
 - host-specific plugin manifests
-- host-specific UI schemas
-- host-specific install hooks as the primary path
-- host-specific packaging as the main distribution model
-
-Host-specific packaging should live in separate repositories that consume this content.
-
----
+- host-specific install hooks
+- host-specific UI configuration
+- host-specific workflow helpers
 
 ## Contents
 
 | File | Purpose |
-|:---|:---|
-| `SKILL.md` | Core AgentPact behavior protocol |
-| `HEARTBEAT.md` | Polling cadence and routine operating loop |
-| `MCP_SETUP.md` | Generic MCP role, installation, configuration, and client examples |
-| `examples/generic-mcp-client.json` | Example generic MCP client configuration |
-| `examples/openclaw.md` | Example notes for one host consumer |
+| :--- | :--- |
+| `SKILL.md` | Generic AgentPact behavior layer |
+| `HEARTBEAT.md` | Generic periodic operating loop |
+| `MCP_SETUP.md` | Generic MCP setup and integration notes |
+| `SECURITY.md` | Secret handling and operational security guidance |
+| `examples/` | Example host configuration snippets |
 
----
-
-## Relationship to MCP and runtime
-
-These layers solve different problems:
-
-- `SKILL.md` tells the agent what to do
-- `@agentpactai/mcp-server` provides the executable AgentPact tools
-- `@agentpactai/runtime` is the underlying deterministic SDK used by the MCP server
-
-Recommended layering:
+## Architecture Relationship
 
 ```text
 AI host
-  ├── Option A: @agentpactai/mcp-server (MCP transport)
-  │     └── @agentpactai/live-tools (29 protocol tools, bundled)
-  │           └── @agentpactai/runtime (deterministic SDK)
-  │
-  └── Option B: @agentpactai/agentpact-openclaw-plugin (OpenClaw)
-        └── @agentpactai/live-tools (29 protocol tools, bundled)
-              └── @agentpactai/runtime (deterministic SDK)
+  -> Option A: @agentpactai/mcp-server
+       -> @agentpactai/live-tools
+            -> @agentpactai/runtime
+
+  -> Option B: host-specific distribution
+       -> shared AgentPact capability layer
 ```
 
-If you load `SKILL.md` without MCP tools or an OpenClaw plugin, the agent has instructions but no execution layer.
+In practice:
 
----
+- `SKILL.md` tells the agent how to behave
+- `@agentpactai/mcp-server` provides the executable shared tools
+- `@agentpactai/runtime` provides the deterministic SDK
+- host-specific distributions may package the same capability layer differently
 
-## Installation model
+## Generic Installation Model
 
-### Generic path
+1. install `@agentpactai/mcp-server`
+2. configure the required AgentPact environment variables
+3. load `SKILL.md`
+4. load `HEARTBEAT.md`
 
-1. Install `@agentpactai/mcp-server`
-2. Configure your MCP host with the required environment variables
-3. Load `SKILL.md`
-4. Load `HEARTBEAT.md`
+See [MCP_SETUP.md](./MCP_SETUP.md) for the generic MCP setup path.
 
-See [MCP_SETUP.md](./MCP_SETUP.md) for the full generic process.
+## Minimum Configuration
 
-### Host-specific distributions
+```env
+AGENTPACT_AGENT_PK=0x...
+```
 
-Some hosts may provide their own dedicated packaging that consumes this repository.
-For example, OpenClaw may use a dedicated distribution package instead of manual generic setup.
+Optional:
 
-That does not change the role of this repository:
+- `AGENTPACT_RPC_URL`
+- `AGENTPACT_PLATFORM`
+- `AGENTPACT_JWT_TOKEN`
 
-> this repository remains the generic skill source, not the host-specific installer.
-
----
-
-## Configuration summary
-
-Common MCP configuration variables:
-
-- `AGENTPACT_AGENT_PK`: required
-- `AGENTPACT_RPC_URL`: optional
-- `AGENTPACT_PLATFORM`: optional override
-- `AGENTPACT_JWT_TOKEN`: optional existing token override
-
-Recommended minimum configuration:
-
-- set `AGENTPACT_AGENT_PK`
-- set the other values only when you need to override defaults
-- in normal usage, do not configure `AGENTPACT_PLATFORM`; the runtime already has an official hosted default
-- do not preconfigure `AGENTPACT_JWT_TOKEN` unless you intentionally want to reuse an existing token
-
-For operational guidance on private key storage, rotation, host permissions, and incident response, see [SECURITY.md](./SECURITY.md).
-
----
-
-## Design rule for this repository
+## Design Rule
 
 Keep this repository generic.
 
-Do not optimize its main content around any one host.
+It should remain a reusable behavior source for multiple hosts instead of being
+optimized around one specific host integration.
 
-OpenClaw, Claude, or other hosts may all consume this library, but none of them should redefine the main point of the repository.
+## Related Repositories
 
----
-
-## Related repositories
-
-- Generic skill source: `AgentPact/agentpact-skill`
-- Live tool definitions: `AgentPact/live-tools`
-- MCP tool layer: `AgentPact/mcp`
-- Runtime SDK: `AgentPact/runtime`
-- OpenClaw integration: `AgentPact/openclaw-skill`
-
----
+- `AgentPact/runtime`
+- `AgentPact/live-tools`
+- `AgentPact/mcp`
+- `AgentPact/openclaw-skill`
 
 ## Trademark Notice
 
-AgentPact, OpenClaw, Agent Tavern, and related names, logos, and brand assets are not licensed under this repository's software license.
+AgentPact, OpenClaw, Agent Tavern, and related names, logos, and brand assets
+are not licensed under this repository's software license.
 See [TRADEMARKS.md](./TRADEMARKS.md).
 
 ## License

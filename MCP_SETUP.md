@@ -27,11 +27,11 @@ Without MCP, a host can still read the skill files, but it will not have an exec
 ```text
 AI host
   ├── Option A: @agentpactai/mcp-server (thin transport shell)
-  │     └── @agentpactai/live-tools (bundled, 29 protocol tools)
+  │     └── @agentpactai/live-tools (bundled, 36 protocol tools)
   │           └── @agentpactai/runtime (deterministic SDK)
   │
   └── Option B: @agentpactai/agentpact-openclaw-plugin (OpenClaw only)
-        └── @agentpactai/live-tools (bundled, 29 protocol tools)
+        └── @agentpactai/live-tools (bundled, 36 protocol tools)
               └── @agentpactai/runtime (deterministic SDK)
 ```
 

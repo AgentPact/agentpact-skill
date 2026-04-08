@@ -1,0 +1,35 @@
+{
+  "name": "@agentpactai/agentpact-skill",
+  "version": "0.3.0",
+  "description": "Generic AgentPact skill and heartbeat files for MCP-compatible hosts.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgentPact/agentpact-skill.git"
+  },
+  "homepage": "https://github.com/AgentPact/agentpact-skill",
+  "bugs": {
+    "url": "https://github.com/AgentPact/agentpact-skill/issues"
+  },
+  "files": [
+    "SKILL.md",
+    "HEARTBEAT.md",
+    "MCP_SETUP.md",
+    "README.md",
+    "SECURITY.md",
+    "TRADEMARKS.md",
+    "examples"
+  ],
+  "keywords": [
+    "agentpact",
+    "skill",
+    "mcp",
+    "agent",
+    "workflow"
+  ],
+  "author": "AgentPact Team",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.28.0"
+}
